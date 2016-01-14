@@ -1,29 +1,34 @@
-
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Revista extends Periodica {
 
 	private String volume;
 	private String numero;
 	private final boolean requisitavel = true;
-	private String codBarras;
+	private int codBarras;
 
-	public Revista(String titulo, Date dataPub, String descricao, String id, int maxDiasRequisicao, String periodicidade, String volume, String numero, String codBarras) {
-		super(titulo, dataPub, descricao, id, maxDiasRequisicao, periodicidade);
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+	public Revista(String titulo, Date dataPub, String descricao, String id, ArrayList<Area> areas, String periodicidade, String volume, String numero, int codBarras) {
+		super(titulo, dataPub, descricao, id, areas, periodicidade);
+		this.volume=volume;
+		this.numero=numero;
+		this.codBarras=codBarras;
 	}
 
 	public String getVolume() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return volume;
 	}
 
 	public String getNumero() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return numero;
 	}
 
-	public String getCodBarras() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+	public int getCodBarras() {
+		return codBarras;
+	}
+	
+	public boolean getRequisitavel() {
+		return requisitavel;
 	}
 
 }
