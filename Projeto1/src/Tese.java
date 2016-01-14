@@ -1,6 +1,5 @@
-
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Tese extends NaoPeriodica {
 
@@ -8,27 +7,35 @@ public class Tese extends NaoPeriodica {
 	private String orientador;
 	private boolean mestrado;
 	private final boolean requisitavel = true;
-	private String codBarras;
+	private int codBarras;
 
-	public Tese (String titulo, Date dataPub, String descricao, String id, int maxDiasRequisicao){
-		super(titulo, dataPub, descricao, id, maxDiasRequisicao);
+	public Tese(String titulo, String autor, Date dataPub, String descricao, String id, ArrayList<Area> areas, String orientador, boolean mestrado, int codBarras) {
+	
+		super(titulo, dataPub, descricao, id, areas);
+		this.autor=autor;
+		this.orientador=orientador;
+		this.codBarras=codBarras;
 	}
+	
 	public String getAutor() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return autor;
 	}
 
 	public String getOrientador() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return orientador;
 	}
 
-	public String getCodBarras() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+	public int getCodBarras() {
+		return codBarras;
 	}
 
 	public String getGrau() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		if (mestrado) return "Mestrado";
+		else return "Doutoramento";
 	}
-
-
+	
+	public boolean getRequisitavel() {
+		return requisitavel;
+	}
 
 }
