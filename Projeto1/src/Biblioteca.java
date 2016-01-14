@@ -77,10 +77,60 @@ public class Biblioteca {
 				System.out.println("Nome de utilizador já registado!");
 				return u;
 			}
+			
 		}
 		return null;
 	}
 
+	public void addRequisicao (Requisicao novaReq){
+		
+		Requisicao req = findRequisicao (novaReq);
+		
+		if (req == null){
+			requisicoes.add(novaReq);
+			System.out.println("Requisição registada");
+		}
+	}
+	
+	private Requisicao findRequisicao(Requisicao novaReq) {
+		
+		for (Requisicao req : requisicoes){
+			
+			if(req.equals(novaReq)){
+				System.out.println("Requisicao ja registada"); //necessario apenas para efeitos de teste
+				return req;
+			}
+		}
+		return null;
+	}
+	
+	public void addPublicacao (Publicacao novaPublicacao){
+		
+		Publicacao pub = findPublicacao (novaPublicacao);
+		
+		if (pub == null){
+			publicacoes.add(novaPublicacao); // --> ADICAO EM AREAS??
+			System.out.println("Publicacao registada");
+		}
+	
+	}
+	
+	private Publicacao findPublicacao(Publicacao novaPublicacao) {
+		
+		for (Publicacao pub : publicacoes){
+			
+			if(pub.getId().equals(novaPublicacao.getId())){  //-->DECIDIR MODO DE CONSULTA(ID, CODIGOBARRAS...)
+				System.out.println("Publicacao ja registada"); //necessario apenas para efeitos de teste
+				return pub;
+			}
+		}
+		return null;
+	}
+	
+	
+	//REMOVES !!
+	
+	
 	public ArrayList <Publicacao> getListaPub() {
 
 		return publicacoes;
