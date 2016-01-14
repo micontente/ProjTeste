@@ -18,7 +18,7 @@ public class Publicacao {
 		this.id=id;
 		this.disponivel=true;
 	}
-
+ 
 	public Date getDataPub() {
 		return dataPub;
 	}
