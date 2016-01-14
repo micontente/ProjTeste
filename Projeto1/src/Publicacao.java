@@ -1,60 +1,41 @@
+import java.util.ArrayList;
+import java.util.Date;
 
-import java.io.*;
-import java.util.*;
+public class Tese extends NaoPeriodica {
 
-public class Publicacao {
+	private String autor;
+	private String orientador;
+	private boolean mestrado;
+	private final boolean requisitavel = true;
+	private int codBarras;
 
-	private boolean requisitavel;
-	private int maxDiasRequisicao;
-	private Date dataPub;
-	private String descricao;
-	private boolean disponivel;
-	private String id;
-	private String titulo;
-	private Calendar dataRec;
-	private ArrayList<Area> Areas;
-
-	public Publicacao(String titulo, Date dataPub, String descricao, String id, int maxDiasRequisicao) {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-
-	public Date getDataPub() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-
-	public String getDescricao() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-
-	public String getTitulo() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-
-	public Boolean getPermissaoReq() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-
-	public Boolean getDisponibilidade() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-
-	public Calendar getDataRec() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-
-	public ArrayList<Area> getAreas() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
-	}
-	public String getId() {
-		return id;
-	}
-
-//	public void setId(String id) {
-//		this.id = id;
-//	}
-	public int getMaxDiasRequisicao(){
-		return maxDiasRequisicao;
+	public Tese(String titulo, String autor, Date dataPub, String descricao, String id, ArrayList<Area> areas, String orientador, boolean mestrado, int codBarras) {
+	
+		super(titulo, dataPub, descricao, id, areas);
+		this.autor=autor;
+		this.orientador=orientador;
+		this.codBarras=codBarras;
 	}
 	
+	public String getAutor() {
+		return autor;
+	}
+
+	public String getOrientador() {
+		return orientador;
+	}
+
+	public int getCodBarras() {
+		return codBarras;
+	}
+
+	public String getGrau() {
+		if (mestrado) return "Mestrado";
+		else return "Doutoramento";
+	}
+	
+	public boolean getRequisitavel() {
+		return requisitavel;
+	}
 
 }
