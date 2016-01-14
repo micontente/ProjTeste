@@ -10,13 +10,22 @@ public class Biblioteca {
 	private ArrayList<Utilizador> utilizadores;
 	private ArrayList<Publicacao> publicacoes;
 
-	public Biblioteca() {		//??
+	public Biblioteca() {	
 		
+		this.areas = new ArrayList<Area>();
+		
+		this.requisicoes = new ArrayList <Requisicao> ();	
+		this.utilizadores = new  ArrayList<Utilizador> ();
+		this.publicacoes = new ArrayList<Publicacao>();
 	}
-	
 	public Biblioteca(String nome) {		//??
 		
 		this.nome = nome;
+		this.areas = new ArrayList<Area>();
+	
+		this.requisicoes = new ArrayList <Requisicao> ();	
+		this.utilizadores = new  ArrayList<Utilizador> ();
+		this.publicacoes = new ArrayList<Publicacao>();
 	}
 
 	public ArrayList <Requisicao> getObrasRequisitadas() {
