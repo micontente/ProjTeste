@@ -60,6 +60,7 @@ public class Biblioteca {
 		if (util == null){
 			
 			utilizadores.add(novoUtilizador);
+			System.out.println("Utilizador registado com sucesso!");
 		}
 		
 	}
