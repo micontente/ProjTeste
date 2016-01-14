@@ -14,7 +14,7 @@ public class Revista extends Periodica {
 		this.numero=numero;
 		this.codBarras=codBarras;
 	}
- 
+
 	public String getVolume() {
 		return volume;
 	}
