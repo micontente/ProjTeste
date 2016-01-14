@@ -1,21 +1,16 @@
-
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class NaoPeriodica extends Publicacao {
 
 	private final boolean requisitavel = true;
 
-	public NaoPeriodica(String titulo, Date dataPub, String descricao, String id, int maxDiasRequisicao) {
-//		Publicacao(String titulo, Date dataPub, String descricao, String id)
-		
-		super(titulo, dataPub, descricao, id, maxDiasRequisicao);
-		
-		
-		
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+	public NaoPeriodica(String titulo, Date dataPub, String descricao, String id, ArrayList<Area> areas) {
+		super(titulo, dataPub, descricao, id, areas);
 	}
 	
-	
+	public boolean getRequisitavel() {
+		return requisitavel;
+	}
 
 }
