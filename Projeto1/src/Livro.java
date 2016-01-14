@@ -1,6 +1,5 @@
-
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class Livro extends NaoPeriodica {
 
@@ -9,31 +8,39 @@ public class Livro extends NaoPeriodica {
 	private String edicao;
 	private String editor;
 	private final boolean requisitavel = true;
-	private String codBarras;
+	private int codBarras;
 
-	public Livro(String titulo, ArrayList<String> autores, Date dataPub, String descricao, String id, String isbn, String edicao, String editor, String codBarras, int maxDiasRequisicao) {
-		super(titulo, dataPub, descricao, id, maxDiasRequisicao);
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+	public Livro(String titulo, ArrayList<String> autores, Date dataPub, String descricao, String id, ArrayList<Area> areas, String isbn, String edicao, String editor, int codBarras) {
+		super(titulo, dataPub, descricao, id, areas);
+		this.isbn=isbn;
+		this.edicao=edicao;
+		this.editor=editor;
+		this.codBarras=codBarras;
+		this.autores=autores;
 	}
 
 	public ArrayList <String> getAutores() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return autores;
 	}
 
 	public String getISBN() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return isbn;
 	}
 
 	public String getEdicao() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return edicao;
 	}
 
 	public String getEditor() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+		return editor;
 	}
 
-	public String getCodBarras() {
-		throw new UnsupportedOperationException("The method is not implemented yet.");
+	public int getCodBarras() {
+		return codBarras;
+	}
+	
+	public boolean getRequisitavel() {
+		return requisitavel;
 	}
 
 }
