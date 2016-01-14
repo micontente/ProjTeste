@@ -1,41 +1,46 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Tese extends NaoPeriodica {
+public class Publicacao {
 
-	private String autor;
-	private String orientador;
-	private boolean mestrado;
-	private final boolean requisitavel = true;
-	private int codBarras;
+	private Date dataPub;
+	private String descricao;
+	private boolean disponivel;
+	private String id;
+	private String titulo;
+//	private Calendar dataRec;
+	private ArrayList<Area> areas;
 
-	public Tese(String titulo, String autor, Date dataPub, String descricao, String id, ArrayList<Area> areas, String orientador, boolean mestrado, int codBarras) {
-	
-		super(titulo, dataPub, descricao, id, areas);
-		this.autor=autor;
-		this.orientador=orientador;
-		this.codBarras=codBarras;
+	public Publicacao(String titulo, Date dataPub, String descricao, String id, ArrayList<Area> areas) {
+		this.titulo=titulo;
+		this.dataPub=dataPub;
+		this.descricao=descricao;
+		this.id=id;
+		this.disponivel=true;
+	}
+
+	public Date getDataPub() {
+		return dataPub;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public boolean getDisponibilidade() {
+		return disponivel;
+	}
+
+	public ArrayList<Area> getAreas() {
+		return areas;
 	}
 	
-	public String getAutor() {
-		return autor;
-	}
-
-	public String getOrientador() {
-		return orientador;
-	}
-
-	public int getCodBarras() {
-		return codBarras;
-	}
-
-	public String getGrau() {
-		if (mestrado) return "Mestrado";
-		else return "Doutoramento";
-	}
-	
-	public boolean getRequisitavel() {
-		return requisitavel;
+	public String getId() {
+		return id;
 	}
 
 }
