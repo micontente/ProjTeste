@@ -133,12 +133,40 @@ public class AnaliseEstatistica {
 	}
 	
 	/*
-	 * Procura na lista de requisicoes, o minTempRequicao (é mais rápida que organizar o arraylist
+	 * Procura na lista de requisicoes, o maxTempRequicao (é mais rápida que organizar o arraylist)
 	 */
-	public int reqMaxPublicacao(ArrayList<Requisicao> r){
+	public int maxTempReqPublicacao(Publicacao p){
+		ArrayList<Requisicao> r=new ArrayList<Requisicao>();
+		r=reqPublicacao(p);
+		int tempo=r.get(0).getDataDevolvido().compareTo(r.get(0).getDataRequisicao());
+		for (Requisicao req: r) {
+			if (req.getDataDevolvido().compareTo(req.getDataRequisicao())>tempo) tempo=req.getDataDevolvido().compareTo(req.getDataRequisicao());
+		}
+		return tempo;
+	}
+	
+	/*
+	 * Procura na lista de requisicoes, o minTempRequicao (é mais rápida que organizar o arraylist)
+	 */
+	public int minTempReqPublicacao(Publicacao p){
+		ArrayList<Requisicao> r=new ArrayList<Requisicao>();
+		r=reqPublicacao(p);
+		int tempo=r.get(0).getDataDevolvido().compareTo(r.get(0).getDataRequisicao());
+		for (Requisicao req: r) {
+			if (req.getDataDevolvido().compareTo(req.getDataRequisicao())<tempo) tempo=req.getDataDevolvido().compareTo(req.getDataRequisicao());
+		}
+		return tempo;
+	}
+	
+	/*
+	 * Calcula o tempo médio de um empréstimo.
+	 */
+	public int medTempReqPublicacao(Publicacao p){
+		ArrayList<Requisicao> r=new ArrayList<Requisicao>();
+		r=reqPublicacao(p);
 		int tempo=0;
 		for (Requisicao req: r) {
-			if (req.getDataDevolvido().compareTo(req.getDataRequisicao())>tempo) tempo=req.getDataDevolvido()-req.getDataRequisicao();
+			tempo+=req.getDataDevolvido().compareTo(req.getDataRequisicao());
 		}
 		return tempo;
 	}
@@ -147,11 +175,14 @@ public class AnaliseEstatistica {
 	 * Cria uma linha por publicação, com os dados separados por vírgulas, ordenados por
 	 * titulo, dataPub, numEmprestimos, emprestimoMin, emprestimoMax, emprestimoMed, descricao
 	 */
-	public String enviaDadosEscrita(){
-		String linha="";
+	public void enviaDadosEscrita(){
+		abreFicheiro();
 		for (Publicacao p: publicacoes) {
-			linha=linha+p.getTitulo()+p.getDataPub()+getNumReqPublicacao(p)+???+???+???+p.getDescricao();
+			String linha="";
+			linha=linha+p.getTitulo()+p.getDataPub()+getNumReqPublicacao(p)+minTempReqPublicacao(p)+maxTempReqPublicacao(p)+medTempReqPublicacao(p)+p.getDescricao();
+			escreveFicheiro(linha);
 		}
+		fechaFicheiro();
 	}
 		
 	public boolean escreveFicheiro(String linha) {
