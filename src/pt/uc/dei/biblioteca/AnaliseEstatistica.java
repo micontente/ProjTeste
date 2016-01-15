@@ -5,11 +5,15 @@ import java.io.*;
 import java.util.*;
 
 public class AnaliseEstatistica {
-
+	
+//	Ficheiro emprestimos01.csv
+	private BufferedWriter fW;
+	private String nomeDoFicheiro="emprestimos.csv";
+	
 //	Requisicao [][] listaRequisicoes;
 	ArrayList <Requisicao> listaRequisicoes;
 	
-				// RECEBER APENAS DADOS DO PERIODO A ESTUDAR ?? (12 MESES)
+// RECEBER APENAS DADOS DO PERIODO A ESTUDAR ?? (12 MESES)
 	public AnaliseEstatistica(ArrayList <Requisicao> listaRequisicoes) {
 
 //		this.listaRequisicoes = new Requisicao [listaRequisicoes.size()][2];
@@ -99,5 +103,35 @@ public class AnaliseEstatistica {
 //	public ArrayList <Publicacao> getPubReqAno() {
 //		throw new UnsupportedOperationException("The method is not implemented yet.");
 //	}
+	
+	public boolean escreveFicheiro(String linha) {
+		
+		try {
+		fW.write(linha,0,linha.length());
+		fW.newLine();
+		return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public void fechaFicheiro() {
+
+		try {
+			fW.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void abreFicheiro() {
+		try {
+			BufferedWriter fW=new BufferedWriter(new FileWriter(new File(nomeDoFicheiro)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
