@@ -13,14 +13,18 @@ public class AnaliseEstatistica {
 //	Requisicao [][] listaRequisicoes;
 	ArrayList <Requisicao> listaRequisicoes;
 	
+//	ArrayList de publicacoes, vindo da biblioteca
+	private ArrayList<Publicacao> publicacoes;
+	
 // RECEBER APENAS DADOS DO PERIODO A ESTUDAR ?? (12 MESES)
-	public AnaliseEstatistica(ArrayList <Requisicao> listaRequisicoes) {
+	public AnaliseEstatistica(ArrayList <Requisicao> listaRequisicoes, ArrayList <Publicacao> publicacoes) {
 
 //		this.listaRequisicoes = new Requisicao [listaRequisicoes.size()][2];
 //		for (int i =0; i<listaRequisicoes.size();i++){
 //			this.listaRequisicoes[i][0]=listaRequisicoes.get(i);
 //		}
 		this.listaRequisicoes = listaRequisicoes;
+		this.publicacoes=publicacoes;
 	}
 /**
  * NAO TESTADO
@@ -88,7 +92,7 @@ public class AnaliseEstatistica {
 		return publicacoesAtraso;
 	}
 
-	public int getNumReqPorPublicacao(String iD) {	//Subrtituir por CodigoBarras//Escolher periodo a estudar?  ???
+	public int getNumReqPorPublicacao(String iD) {	//Substituir por CodigoBarras//Escolher periodo a estudar?  ???
 		
 		int nRequisicoes = 0;
 		for (Requisicao obraReq:listaRequisicoes){
@@ -104,6 +108,52 @@ public class AnaliseEstatistica {
 //		throw new UnsupportedOperationException("The method is not implemented yet.");
 //	}
 	
+	
+	/*
+	 * Procura, na lista de requisições, quantas requisicoes são da publicacao dada
+	 */
+	public int getNumReqPublicacao(Publicacao p) {
+		int count=0;
+		for (Requisicao r: listaRequisicoes){
+			if (r.getPublicacao().equals(p)) count++;
+		}
+		return count;
+	}
+	
+	/*
+	 * Procura, na lista de requisicoes, as requisicoes de uma publicacao e adiciona a um ArrayList
+	 */
+	
+	public ArrayList<Requisicao> reqPublicacao(Publicacao p) {
+		ArrayList<Requisicao> reqPublicacao=new ArrayList<Requisicao>();
+		for (Requisicao r: listaRequisicoes) {
+			if (r.getPublicacao().equals(p)) reqPublicacao.add(r);
+		}
+		return reqPublicacao;
+	}
+	
+	/*
+	 * Procura na lista de requisicoes, o minTempRequicao (é mais rápida que organizar o arraylist
+	 */
+	public int reqMaxPublicacao(ArrayList<Requisicao> r){
+		int tempo=0;
+		for (Requisicao req: r) {
+			if (req.getDataDevolvido().compareTo(req.getDataRequisicao())>tempo) tempo=req.getDataDevolvido()-req.getDataRequisicao();
+		}
+		return tempo;
+	}
+	
+	/*
+	 * Cria uma linha por publicação, com os dados separados por vírgulas, ordenados por
+	 * titulo, dataPub, numEmprestimos, emprestimoMin, emprestimoMax, emprestimoMed, descricao
+	 */
+	public String enviaDadosEscrita(){
+		String linha="";
+		for (Publicacao p: publicacoes) {
+			linha=linha+p.getTitulo()+p.getDataPub()+getNumReqPublicacao(p)+???+???+???+p.getDescricao();
+		}
+	}
+		
 	public boolean escreveFicheiro(String linha) {
 		
 		try {
@@ -120,7 +170,6 @@ public class AnaliseEstatistica {
 		try {
 			fW.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

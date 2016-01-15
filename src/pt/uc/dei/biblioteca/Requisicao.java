@@ -6,11 +6,11 @@ import java.util.*;
 
 public class Requisicao {
 
-	private Date dataDevolvido;// = dataRequisicao-1dia;
-	private Calendar dataRequisicao = Calendar.getInstance();
+	private GregorianCalendar dataDevolvido;// = dataRequisicao-1dia;
+	private GregorianCalendar dataRequisicao = (GregorianCalendar) Calendar.getInstance();
 	private Utilizador leitor;
 	private Publicacao publicacao;
-	private Calendar dataDevolucao;
+	private GregorianCalendar dataDevolucao;
 
 	public Requisicao(Utilizador leitor, Publicacao publicacao) {
 		
@@ -19,19 +19,19 @@ public class Requisicao {
 //		dataDevolucao --> em funcao de publicacao.getMaxDiasRequisicao();
 	}
 
-	public Date getDataDevolvido() {
+	public GregorianCalendar getDataDevolvido() {
 		return dataDevolvido;
 	}
 
-	public void setDataDevolvido(Date dataDevolvido) {
+	public void setDataDevolvido(GregorianCalendar dataDevolvido) {
 		this.dataDevolvido = dataDevolvido;
 	}
 
-	public Calendar getDataRequisicao() {
+	public GregorianCalendar getDataRequisicao() {
 		return dataRequisicao;
 	}
 
-	public void setDataRequisicao(Calendar dataRequisicao) {
+	public void setDataRequisicao(GregorianCalendar dataRequisicao) {
 		this.dataRequisicao = dataRequisicao;
 	}
 
@@ -51,11 +51,11 @@ public class Requisicao {
 		this.publicacao = publicacao;
 	}
 
-	public Calendar getDataDevolucao() {
+	public GregorianCalendar getDataDevolucao() {
 		return dataDevolucao;
 	}
 
-	public void setDataDevolucao(Calendar dataDevolucao) {
+	public void setDataDevolucao(GregorianCalendar dataDevolucao) {
 		this.dataDevolucao = dataDevolucao;
 	}
 
